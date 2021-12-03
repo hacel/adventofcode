@@ -16,8 +16,8 @@ func bitAt(n int64, i int) int64 {
 func main() {
 	var o2 []int64
 	var co2 []int64
-	for line := range scan.B("3/input.txt") {
-		n, err := strconv.ParseInt(string(line), 2, 64)
+	for line := range scan.S("3/input.txt") {
+		n, err := strconv.ParseInt(line, 2, 64)
 		if err != nil {
 			panic(err)
 		}
@@ -27,10 +27,6 @@ func main() {
 
 	// Oxygen generator rating
 	for i := 0; i < WIDTH; i++ {
-		if len(o2) == 1 {
-			break
-		}
-
 		// Get most common bit
 		var n0, n1 int
 		for j := 0; j < len(o2); j++ {
@@ -46,7 +42,7 @@ func main() {
 		}
 
 		// Filter
-		for j := 0; j < len(o2); {
+		for j := 0; j < len(o2) && len(o2) > 1; {
 			if bitAt(o2[j], i) != bit {
 				o2 = append(o2[:j], o2[j+1:]...)
 				continue
@@ -76,7 +72,7 @@ func main() {
 		}
 
 		// Filter
-		for j := 0; j < len(co2); {
+		for j := 0; j < len(co2) && len(co2) > 1; {
 			if bitAt(co2[j], i) != bit {
 				co2 = append(co2[:j], co2[j+1:]...)
 				continue

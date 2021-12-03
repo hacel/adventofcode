@@ -17,7 +17,10 @@ func B(path string) chan []byte {
 		defer close(ch)
 		scanner := bufio.NewScanner(f)
 		for scanner.Scan() {
-			ch <- scanner.Bytes()
+			buf := scanner.Bytes()
+			line := make([]byte, len(buf))
+			copy(line, buf)
+			ch <- line
 		}
 		if err := scanner.Err(); err != nil {
 			panic(err)

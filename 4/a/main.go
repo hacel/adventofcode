@@ -45,8 +45,8 @@ func (b *Board) SumUnmarked() int {
 }
 
 func (b *Board) Won() bool {
-	horizontal := [5]int{}
-	vertical := [5]int{}
+	vertical := [WIDTH]int{}
+	horizontal := [HEIGHT]int{}
 	for y := 0; y < HEIGHT; y++ {
 		for x := 0; x < WIDTH; x++ {
 			if b.grid[y][x].marked {
@@ -55,7 +55,7 @@ func (b *Board) Won() bool {
 					return true
 				}
 				vertical[y]++
-				if vertical[y] == WIDTH {
+				if vertical[y] == HEIGHT {
 					return true
 				}
 			}

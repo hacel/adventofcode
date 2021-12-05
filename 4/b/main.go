@@ -50,8 +50,8 @@ func (b *Board) Won() bool {
 		return b.won
 	}
 
-	vertical := [HEIGHT]int{}
-	horizontal := [WIDTH]int{}
+	vertical := [WIDTH]int{}
+	horizontal := [HEIGHT]int{}
 	for y := 0; y < HEIGHT; y++ {
 		for x := 0; x < WIDTH; x++ {
 			if b.grid[y][x].marked {
@@ -61,7 +61,7 @@ func (b *Board) Won() bool {
 					return true
 				}
 				vertical[y]++
-				if vertical[y] == WIDTH {
+				if vertical[y] == HEIGHT {
 					b.won = true
 					return true
 				}
